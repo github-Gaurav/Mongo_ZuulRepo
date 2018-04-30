@@ -1,0 +1,6 @@
+zuul:
+  routes:
+    zuulClient: 
+        path: /get
+        url: http://localhost:8000
+        
