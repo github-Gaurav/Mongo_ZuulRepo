@@ -4,24 +4,23 @@ import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestClientException;
 
 import com.javainuse.controllers.ConsumerControllerClient;
 
 @SpringBootApplication
+@RibbonClient(name="School-Service")
 public class EurekaConsumerApplication {
 
 	public static void main(String[] args) throws RestClientException, IOException {
-		//ApplicationContext ctx = 	SpringApplication.run(EurekaConsumerApplication.class, args);
 		SpringApplication.run(EurekaConsumerApplication.class, args);
-		/*ConsumerControllerClient consumerControllerClient=ctx.getBean(ConsumerControllerClient.class);
-		System.out.println(consumerControllerClient);
-		consumerControllerClient.getEmployee();*/
 	}
 
 	@Bean
+	@LoadBalanced
 	public  ConsumerControllerClient  consumerControllerClient()
 	{
 		return  new ConsumerControllerClient();
