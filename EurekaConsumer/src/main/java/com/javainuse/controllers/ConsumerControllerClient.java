@@ -27,6 +27,7 @@ public class ConsumerControllerClient {
 	@Value("${server.port}")
 	String port;
 	
+	
 	@RequestMapping("/get/{id}")
 	public String getEmployee(@PathVariable String id) throws RestClientException, IOException {
 		System.out.println("Inside get employee "+ "--->" + "Request is coming from--> " + port);
