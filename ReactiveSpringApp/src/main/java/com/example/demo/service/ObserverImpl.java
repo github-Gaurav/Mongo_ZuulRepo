@@ -2,7 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 
-import rx.observables.GroupedObservable;
+import io.reactivex.observables.GroupedObservable;
+
 
 public class ObserverImpl {
 	

@@ -1,15 +1,16 @@
 package com.example.demo.react;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
-import rx.Observable;
-import rx.Subscriber;
+import io.reactivex.Observable;
 
 public class ReactDemo {
 
 	public static void main(String[] args) {
 
 		Observable<String> obs =  Observable.just("Hello");
-		 Observable.range(1, 5).subscribe(
+		Observable.range(1, 5).subscribe(
 				u -> System.out.println(u),
 				v -> System.out.println("error"),
 				() -> System.out.println(Thread.currentThread().getId()));
@@ -23,10 +24,20 @@ public class ReactDemo {
 	            @Override
 	            public void onError(Throwable e) { System.out.println("error"); }
 
-	            @Override
-	            public void onCompleted() { System.out.println("completed"); }
+
+				@Override
+				public void onComplete() {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onSubscribe(Subscription arg0) {
+					// TODO Auto-generated method stub
+					
+				}
 	        };
-	        source.subscribe(consumer);
+	        source.subscribe();
 	        
 	        
 	}
