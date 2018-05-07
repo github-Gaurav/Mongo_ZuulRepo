@@ -3,7 +3,7 @@ package Banking_Application_Account_Creation.accountCreation.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "Register_Account")
 public class Customer {
 	
 	@Id

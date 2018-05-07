@@ -11,9 +11,17 @@ public class AccountCreationDAO {
 	@Autowired
 	CustomerRepository repo;
 	
+	public AccountCreationDAO(CustomerRepository repo){
+		this.repo = repo;
+	}
 	
+	
+	public AccountCreationDAO() {
+	}
+
+
 	public int add(Customer customer){
-		System.out.println("About to save user");
+		System.out.println("About to save user" + customer.getAddress());
 		repo.save(customer);
 		return 200;
 	}

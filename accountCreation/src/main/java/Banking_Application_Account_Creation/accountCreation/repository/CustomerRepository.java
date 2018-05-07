@@ -7,6 +7,7 @@ import Banking_Application_Account_Creation.accountCreation.entity.Customer;
 @Repository
 public interface CustomerRepository  extends MongoRepository<Customer, String>{
 
-	
+	public Customer findByName(String name);
+	//public Customer findByCompany(String company);
 	
 }

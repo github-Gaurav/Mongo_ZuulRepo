@@ -35,5 +35,25 @@ public class AccountCreationService {
 		
 		
 	}
+	
+public int processRequest1(AccountCreationResource accountCreationResource, Customer inputStream) throws UnsupportedEncodingException, IOException, ParseException{
+		
+		val = ServiceFactory.getValidationService();
+		//JSONParser jsonParser = new JSONParser();
+		/*Customer customer = (Customer)jsonParser.parse(
+		      new InputStreamReader(inputStream, "UTF-8"));*/
+		
+		int status = val.validateDetails(inputStream);
+		if(status != 200){
+			return val.validateDetails(inputStream);
+		}else {
+			
+			conn= ServiceFactory.getConnectionService();
+		 return	conn.insertCustomerDetails(inputStream);
+
+		}
+		
+		
+	}
 
 }

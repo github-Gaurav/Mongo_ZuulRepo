@@ -8,6 +8,8 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import Banking_Application_Account_Creation.accountCreation.entity.Customer;
 import Banking_Application_Account_Creation.accountCreation.factory.ServiceFactory;
 
 
@@ -17,9 +19,9 @@ public class AccountCreationResource {
 
 
 	@PostMapping("/create")
-	public int createAccount( @RequestBody InputStream stream) throws UnsupportedEncodingException, IOException, ParseException{
+	public int createAccount( @RequestBody Customer customer) throws UnsupportedEncodingException, IOException, ParseException{
 
-		return (ServiceFactory.getAccountCreationService().processRequest(this ,stream) );
+		return (ServiceFactory.getAccountCreationService().processRequest1(this ,customer) );
 
 	}
 
