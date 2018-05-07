@@ -6,13 +6,15 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import Banking_Application_Account_Creation.accountCreation.DTO.Customer;
+
+import Banking_Application_Account_Creation.accountCreation.entity.Customer;
 import Banking_Application_Account_Creation.accountCreation.factory.ServiceFactory;
 import Banking_Application_Account_Creation.accountCreation.resource.AccountCreationResource;
 
 public class AccountCreationService {
 	
 	ValidationService val = null;
+	ConnectionService conn = null;
 	
 	public int processRequest(AccountCreationResource accountCreationResource, InputStream inputStream) throws UnsupportedEncodingException, IOException, ParseException{
 		
@@ -21,8 +23,16 @@ public class AccountCreationService {
 		Customer customer = (Customer)jsonParser.parse(
 		      new InputStreamReader(inputStream, "UTF-8"));
 		
+		int status = val.validateDetails(customer);
+		if(status != 200){
+			return val.validateDetails(customer);
+		}else {
+			
+			conn= ServiceFactory.getConnectionService();
+		 return	conn.insertCustomerDetails(customer);
+
+		}
 		
-		return val.validateDetails(customer);
 		
 	}
 

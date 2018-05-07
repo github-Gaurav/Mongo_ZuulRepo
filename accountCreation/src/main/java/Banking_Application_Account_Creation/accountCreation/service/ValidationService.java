@@ -1,6 +1,6 @@
 package Banking_Application_Account_Creation.accountCreation.service;
 
-import Banking_Application_Account_Creation.accountCreation.DTO.Customer;
+import Banking_Application_Account_Creation.accountCreation.entity.Customer;
 
 public class ValidationService {
 	
