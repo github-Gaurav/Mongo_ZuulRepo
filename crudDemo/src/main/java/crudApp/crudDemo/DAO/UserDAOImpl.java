@@ -2,9 +2,10 @@ package crudApp.crudDemo.DAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import crudApp.crudDemo.entity.User;
 import crudApp.crudDemo.repository.UserRepository;
-import rx.Single;
+import io.reactivex.Single;
 
 @Service
 public class UserDAOImpl implements UserDAO{
@@ -37,10 +38,11 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public Single<User> addUserData(User userDTO) {
+	public User addUserData(User userDTO) {
 
 		System.out.println("Inside Add user data");
-		return	Single.just(repo.save(userDTO));
+		//return	Single.just(repo.save(userDTO));
+		return	repo.save(userDTO);
 
 	}
 

@@ -2,7 +2,7 @@ package crudApp.crudDemo.DAO;
 
 
 import crudApp.crudDemo.entity.User;
-import rx.Single;
+import io.reactivex.Single;
 
 public interface UserDAO {
 	
@@ -13,8 +13,7 @@ public interface UserDAO {
 	public User getUserByName(String name);
 	public User getUserById(String id);
 	public Single<User> updateUserData(User userDTO);
-	
-	public Single<User> addUserData(User userDTO);
+	public User addUserData(User userDTO);
 
 
 }
